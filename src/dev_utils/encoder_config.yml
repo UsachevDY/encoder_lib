@@ -1,0 +1,31 @@
+default:
+  type: bert_client
+  input_dim: 1
+  output_dim: 768
+  params:
+    port: 5555
+    port_out: 5556
+    ip: localhost
+    timeout: 5000
+
+bert_embedded:
+  type: bert_embedded
+  input_dim: 1
+  output_dim: 768
+  params:
+    graph:
+      path:
+        type: relative
+        os_env: BERT_HOME
+        file: model_for_inference.pbtxt
+    vocab:
+      path:
+        type: relative
+        os_env: BERT_HOME
+        file: vocab.txt
+
+test_composite:
+  type: composite
+  params:
+    encoders:
+      - default
