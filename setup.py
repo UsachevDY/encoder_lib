@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='encoder_utils_lib',
+    name='encoder_lib',
     version='1.0',
     description='Library for creating encoders pipes',
     packages=find_packages('src/', exclude=["dev_utils"]),
