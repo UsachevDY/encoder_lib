@@ -4,6 +4,12 @@ But some steps are atomic bricks and can be reuseful.
 Beside it some encoding takes a lot of time and we reinvent caches.
 Encoder library provide simple way initialization and pipeline construction.   
 
+# Install
+```bash
+git clone https://github.com/NightFantom/encoder_lib.git
+cd encoder_lib
+pip install .[bert_embedded,bert_client]
+```
 
 # Get started
 Let's create bert thin client for bert-as-service
