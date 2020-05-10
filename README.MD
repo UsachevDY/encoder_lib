@@ -92,7 +92,7 @@ encoder_conf_dict = {
 ```
 
 # Path object
-Path object is flexible description of file location. Current path object version support:
+Path object is flexible description of file location. Current path object version supports:
 1. Absolute path - allow to specify full path to file
      ```yaml
      path_desc:
