@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name='encoder_lib',
-    version='1.0',
+    version='1.1',
     author="Denis Usachev",
     author_email="usachevdy@yandex.ru",
     url="https://github.com/NightFantom/encoder_lib",
