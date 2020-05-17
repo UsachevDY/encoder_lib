@@ -1,4 +1,4 @@
-
+ENCODER_VERBOSE = "verbose"
 PATH_DESC = "path_desc"
 
 ENCODER_PARAMS = "params"

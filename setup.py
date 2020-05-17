@@ -1,11 +1,12 @@
 from setuptools import setup, find_packages
+import encoders
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(
     name='encoder_lib',
-    version='1.1',
+    version=encoders.__version__,
     author="Denis Usachev",
     author_email="usachevdy@yandex.ru",
     url="https://github.com/NightFantom/encoder_lib",

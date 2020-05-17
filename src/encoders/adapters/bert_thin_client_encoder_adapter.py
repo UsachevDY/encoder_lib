@@ -4,7 +4,8 @@ from encoders.base_encoder import BaseEncoder
 
 class BertClientAdapter(BaseEncoder):
 
-    def __init__(self, encoder: "BertClient", input_dim: int, output_dim: int) -> None:
+    def __init__(self, encoder: "BertClient", input_dim: int, output_dim: int, verbose=False) -> None:
+        super().__init__(verbose)
         self.__encoder = encoder
         self.__input_dim = input_dim
         self.__output_dim = output_dim

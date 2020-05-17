@@ -11,7 +11,7 @@ class Main:
         self.encoder_factory = EncoderFactory(encoder_conf_dict)
 
     def run(self):
-        encoder = self.encoder_factory.get_encoder("test_composite")
+        encoder = self.encoder_factory.get_encoder("bert_embedded")
 
         while True:
             text = input(">")

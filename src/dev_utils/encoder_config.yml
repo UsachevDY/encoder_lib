@@ -10,16 +10,17 @@ default:
 
 bert_embedded:
   type: bert_embedded
+  verbose: True
   input_dim: 1
   output_dim: 768
   params:
     graph:
-      path:
+      path_desc:
         type: relative
         os_env: BERT_HOME
         file: model_for_inference.pbtxt
     vocab:
-      path:
+      path_desc:
         type: relative
         os_env: BERT_HOME
         file: vocab.txt

@@ -26,6 +26,7 @@ class EncoderFactory:
     def build_encoder(self, key):
         config = self.__config[key]
         encoder_type = config[ENCODER_TYPE]
+        verbose = config.get(ENCODER_VERBOSE, False)
         if encoder_type == ENCODER_TYPE_BERT_CLIENT:
             try:
                 from bert_serving.client import BertClient
@@ -33,12 +34,12 @@ class EncoderFactory:
                 raise ImportError('Bert Embedded is not fully installed, '
                                   'Please use "pip install -U encoder_utils_lib[bert_client]" to install it.')
             encoder = BertClient(**config[ENCODER_PARAMS])
-            encoder = BertClientAdapter(encoder, config[ENCODER_INPUT_DIM], config[ENCODER_OUTPUT_DIM])
+            encoder = BertClientAdapter(encoder, config[ENCODER_INPUT_DIM], config[ENCODER_OUTPUT_DIM], verbose=verbose)
         elif encoder_type == ENCODER_TYPE_TFIDF:
             path = self.__get_path(config[PATH_DESC])
             with open(path, mode="rb") as file:
                 tf_idf = pickle.load(file)
-            encoder = TFIDFAdapter(tf_idf)
+            encoder = TFIDFAdapter(tf_idf, verbose=verbose)
         elif encoder_type == ENCODER_TYPE_COMPOSITE:
             params_dict = config[ENCODER_PARAMS]
             encoder_key_list = params_dict[ENCODER_COMPOSITE_ENCODER_LIST]
@@ -46,7 +47,7 @@ class EncoderFactory:
             for key in encoder_key_list:
                 encoder = self.get_encoder(key)
                 encoder_list.append(encoder)
-            encoder = CompositeEncoder(encoder_list)
+            encoder = CompositeEncoder(encoder_list, verbose=verbose)
         elif encoder_type == ENCODER_TYPE_BERT_EMBEDDED:
             try:
                 from bert_experimental.feature_extraction.bert_feature_extractor import BERTFeatureExtractor
@@ -58,7 +59,7 @@ class EncoderFactory:
             vocab_path = self.__get_path(params_dict[BERT_EMBEDDED_VOCAB][PATH_DESC])
 
             encoder = BERTFeatureExtractor(graph_path, vocab_path)
-            encoder = BertEmbeddedAdapter(encoder, config[ENCODER_INPUT_DIM], config[ENCODER_OUTPUT_DIM])
+            encoder = BertEmbeddedAdapter(encoder, config[ENCODER_INPUT_DIM], config[ENCODER_OUTPUT_DIM], verbose=verbose)
         else:
             raise ValueError(f"Not support encoder type {encoder_type}")
 

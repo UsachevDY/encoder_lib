@@ -5,7 +5,8 @@ from encoders.base_encoder import BaseEncoder
 
 class CompositeEncoder(BaseEncoder):
 
-    def __init__(self, encoders: List[BaseEncoder]):
+    def __init__(self, encoders: List[BaseEncoder], verbose=False):
+        super().__init__(verbose)
         self.__encoders = encoders
 
     def input_dim(self) -> int:

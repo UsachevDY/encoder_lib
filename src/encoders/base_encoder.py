@@ -4,6 +4,9 @@ from typing import Any, Iterable
 
 class BaseEncoder(ABC):
 
+    def __init__(self, verbose=False):
+        self._verbose = verbose
+
     @abstractmethod
     def input_dim(self) -> int:
         pass

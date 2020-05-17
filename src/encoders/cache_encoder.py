@@ -7,7 +7,8 @@ from encoders.base_encoder import BaseEncoder
 
 class EncoderCache(BaseEncoder):
 
-    def __init__(self, encoder: BaseEncoder, cache: Dict[str, np.array] = None) -> None:
+    def __init__(self, encoder: BaseEncoder, cache: Dict[str, np.array] = None, verbose=False) -> None:
+        super().__init__(verbose)
         self.encoder = encoder
         self.cache = cache or {}
 

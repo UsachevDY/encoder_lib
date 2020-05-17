@@ -5,7 +5,8 @@ from encoders.base_encoder import BaseEncoder
 
 class TFIDFAdapter(BaseEncoder):
 
-    def __init__(self, tf_idf: TfidfVectorizer) -> None:
+    def __init__(self, tf_idf: TfidfVectorizer, verbose=False) -> None:
+        super().__init__(verbose)
         self.__encoder = tf_idf
 
     def input_dim(self) -> int:

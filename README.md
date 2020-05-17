@@ -136,6 +136,7 @@ example_bert_client:
 
 example_bert_embedded:
   type: bert_embedded
+  verbose: True
   input_dim: 1
   output_dim: 768
   params:
@@ -164,3 +165,12 @@ example_tf_idf:
         file: /dumped_tf_idf/model.pkl
      
 ```
+
+# Release notes
+
+## 1.2
+1. Added parameter verbose for BaseEncoder and all child classes
+1. Added method simple_dump_to_pickle for dumping EncoderCache.
+
+## 1.0
+1. Added base functionality for Bert and TF-IDF encoders
