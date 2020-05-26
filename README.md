@@ -140,6 +140,7 @@ example_bert_embedded:
   input_dim: 1
   output_dim: 768
   params:
+    seq_len: 25
     graph:
       path_desc:
         type: relative
@@ -167,6 +168,8 @@ example_tf_idf:
 ```
 
 # Release notes
+## 1.3
+1. Added parameter seq_len for BERTFeatureExtractor
 
 ## 1.2
 1. Added parameter verbose for BaseEncoder and all child classes

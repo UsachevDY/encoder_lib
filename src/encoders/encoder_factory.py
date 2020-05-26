@@ -57,8 +57,9 @@ class EncoderFactory:
             params_dict = config[ENCODER_PARAMS]
             graph_path = self.__get_path(params_dict[BERT_EMBEDDED_GRAPH][PATH_DESC])
             vocab_path = self.__get_path(params_dict[BERT_EMBEDDED_VOCAB][PATH_DESC])
+            seq_len = params_dict.get(BERT_EMBEDDED_MAX_SEQ_LEN, 25)
 
-            encoder = BERTFeatureExtractor(graph_path, vocab_path)
+            encoder = BERTFeatureExtractor(graph_path, vocab_path, seq_len=seq_len)
             encoder = BertEmbeddedAdapter(encoder, config[ENCODER_INPUT_DIM], config[ENCODER_OUTPUT_DIM], verbose=verbose)
         else:
             raise ValueError(f"Not support encoder type {encoder_type}")
